@@ -5,7 +5,7 @@ import { studentRoutes } from './routes/studentRoutes.js';
 import { pool } from './db.js';
 
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 app.use(express.json());
 
@@ -19,7 +19,6 @@ pool.query('SELECT NOW()')
     console.error('Database connection failed:', err.message)
   );
 
-// Start server
 app.listen(PORT, () => {
-  console.log(`Course API running at http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
